@@ -9,8 +9,7 @@ const Navbar = () => {
     <AppBar position="static">
     <Container maxWidth="lg">
         <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Morgage Calcuator App
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}> Morgage Calcuator
           </Typography>
         </Toolbar>
     </Container>
