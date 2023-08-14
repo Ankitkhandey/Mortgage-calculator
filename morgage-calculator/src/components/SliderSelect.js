@@ -3,47 +3,63 @@ import SliderComponent from './common/SliderComponent'
 const CURRENCY="$";
 const PERCENTAGE="%"
 
-const SliderSelect = () => {
+const SliderSelect = ({data, setData}) => {
   return (
     <>
       <SliderComponent 
       label="Home value"
       currency = {CURRENCY}
-      amount="3000"
+      amount={data.homeValue}
       minAmount="1000"
       maxAmount="10000"
-      defaultValue={3000} min={1000} max={10000} step={100} 
-      onChange={(e,value)=>console.log(value)}
+      value= {data.homeValue}
+      defaultValue={data.homeValue} min={1000} max={10000} step={100} 
+      onChange={(e,value)=>setData({
+        ...data,
+          homeValue: value
+      })}
       />
 
       <SliderComponent 
       label="Down Payment"
       currency = {CURRENCY}
-      amount="1500"
+      amount={data.downPayment}
       minAmount="0"
       maxAmount="3000"
-      defaultValue={500} min={0} max={3000} step={100} 
-      onChange={(e,value)=>console.log(value)}
+      value= {data.downPayment}
+      defaultValue={data.downPayment} min={0} max={data.homeValue} step={100} 
+      onChange={(e,value)=>setData({
+        ...data,
+        downPayment: value
+      })}
       />
 
       <SliderComponent 
       currency = {CURRENCY}
-      amount="500"
+      amount={data.loanAmount}
       label="Loan Amount"
       minAmount="0"
       maxAmount="3000"
-      defaultValue={1500} min={0} max={3000} step={100} 
-      onChange={(e,value)=>console.log(value)}
+      value={data.loanAmount}
+      defaultValue={data.loanAmount} min={0} max={3000} step={100} 
+      onChange={(e,value)=>setData({
+          ...data,
+          loanAmount: value
+      })}
       />
 
       <SliderComponent 
       currency = {PERCENTAGE}
       label="Interest Rate"
-      amount="5"
+      amount={data.loanTerm}
       minAmount="0"
       maxAmount="18"
-      defaultValue={5} min={0} max={18} step={1} 
-      onChange={(e,value)=>console.log(value)}
+      value={data.loanTerm}
+      defaultValue={data.loanTerm} min={0} max={18} step={1} 
+      onChange={(e,value)=>setData({
+        ...data,
+        loanTerm:value
+      })}
       />
     </>
   )
