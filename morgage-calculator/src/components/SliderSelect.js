@@ -24,10 +24,10 @@ const SliderSelect = ({data, setData}) => {
       label="Down Payment"
       currency = {CURRENCY}
       amount={data.downPayment}
-      minAmount="0"
-      maxAmount="3000"
+      minAmount="1000"
+      maxAmount={data.homeValue}
       value= {data.downPayment}
-      defaultValue={data.downPayment} min={0} max={data.homeValue} step={100} 
+      defaultValue={data.downPayment} min={500} max={data.homeValue} step={100} 
       onChange={(e,value)=>setData({
         ...data,
         downPayment: value
@@ -36,12 +36,12 @@ const SliderSelect = ({data, setData}) => {
 
       <SliderComponent 
       currency = {CURRENCY}
-      amount={data.loanAmount}
+      amount={data.homeValue- data.downPayment}
       label="Loan Amount"
       minAmount="0"
-      maxAmount="3000"
+      maxAmount={data.homeValue- data.downPayment}
       value={data.loanAmount}
-      defaultValue={data.loanAmount} min={0} max={3000} step={100} 
+      defaultValue={data.homeValue- data.downPayment} min={0} max={data.homeValue- data.downPayment} step={100} 
       onChange={(e,value)=>setData({
           ...data,
           loanAmount: value
@@ -51,14 +51,14 @@ const SliderSelect = ({data, setData}) => {
       <SliderComponent 
       currency = {PERCENTAGE}
       label="Interest Rate"
-      amount={data.loanTerm}
+      amount={data.interest}
       minAmount="0"
       maxAmount="18"
-      value={data.loanTerm}
-      defaultValue={data.loanTerm} min={0} max={18} step={1} 
+      value={data.interest}
+      defaultValue={data.interest} min={0} max={18} step={0.5} 
       onChange={(e,value)=>setData({
         ...data,
-        loanTerm:value
+        interest:value
       })}
       />
     </>
