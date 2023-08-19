@@ -28,7 +28,7 @@ function App() {
           </Grid>
 
           <Grid item md={6}>
-            <Result/>
+            <Result data={data}/>
           </Grid>
 
 
